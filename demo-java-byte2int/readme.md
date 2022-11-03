@@ -1,5 +1,5 @@
 ## byte数组 和 int相互转换
-int的从高到低有32位，byte有8位，一个int可以长度为4的byte数组互转。
+int从高到低有32位，byte有8位，一个int可以长度为4的byte数组互转。
 ![](https://raw.githubusercontent.com/xiejinjie/xiejinjie.github.io/gh-pages/assets/img/20221103223054.png)
 
 
