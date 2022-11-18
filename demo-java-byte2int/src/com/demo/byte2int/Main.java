@@ -60,7 +60,7 @@ public class Main {
     }
 
     /**
-     * 字节数组转int 大端模式
+     * 字节数组转int 小端模式
      */
     public static int byteArrayToIntLittleEndian(byte[] bytes) {
         int x = 0;
