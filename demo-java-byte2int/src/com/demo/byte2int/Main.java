@@ -1,7 +1,5 @@
 package com.demo.byte2int;
 
-import java.util.Random;
-
 public class Main {
     public static void main(String[] args) {
         int x = 0x12345678;
@@ -23,9 +21,6 @@ public class Main {
         System.out.println("byte array to int: 0x" + Integer.toHexString(byteArrayToIntLittleEndian(littleEndian)));
         System.out.println("byte array to int: 0x" + Integer.toHexString(byteArrayToIntLittleEndian(littleEndian, 0, 4)));
     }
-
-
-
 
     /**
      * int转字节数组 大端模式
@@ -50,8 +45,6 @@ public class Main {
         bytes[3] = (byte) (x >> 24);
         return bytes;
     }
-
-
 
     /**
      * 字节数组转int 大端模式
