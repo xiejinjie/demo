@@ -1,4 +1,4 @@
-package com.demo.netty.echo;
+package com.demo.netty;
 
 import java.io.IOException;
 import java.io.InputStream;

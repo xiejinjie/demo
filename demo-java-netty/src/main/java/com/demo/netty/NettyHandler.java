@@ -13,10 +13,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.demo.netty.echo;
+package com.demo.netty;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -25,7 +24,7 @@ import java.nio.charset.Charset;
 /**
  * Handler implementation for the echo server
  */
-public class EchoHandler extends ChannelInboundHandlerAdapter {
+public class NettyHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
