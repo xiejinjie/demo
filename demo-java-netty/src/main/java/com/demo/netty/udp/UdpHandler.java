@@ -13,24 +13,27 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.demo.netty;
+package com.demo.netty.udp;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
-import java.nio.charset.Charset;
+import io.netty.channel.socket.DatagramPacket;
 
 /**
  * Handler implementation for the echo server
  */
-public class NettyHandler extends ChannelInboundHandlerAdapter {
+public class UdpHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        System.out.println("receive msg:" + ((ByteBuf)msg).toString(Charset.defaultCharset()));
-        ctx.write(msg); // (1)
-        ctx.flush(); // (2)
+        DatagramPacket datagramPacket = (DatagramPacket) msg;
+        ByteBuf byteBuf = datagramPacket.content();
+        int len = byteBuf.readableBytes();
+        byte[] bytes = new byte[len];
+        byteBuf.readBytes(bytes);
+        System.out.println("receive msg: " + new String(bytes));
+        datagramPacket.release();
     }
 
     @Override

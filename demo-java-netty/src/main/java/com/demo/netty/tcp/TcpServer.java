@@ -1,4 +1,4 @@
-package com.demo.netty;
+package com.demo.netty.tcp;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -9,7 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class NettyServer {
+public class TcpServer {
     public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -20,7 +20,7 @@ public class NettyServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new NettyHandler());
+                            ch.pipeline().addLast(new TcpHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)

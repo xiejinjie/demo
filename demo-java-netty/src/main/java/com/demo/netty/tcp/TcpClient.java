@@ -1,11 +1,11 @@
-package com.demo.netty;
+package com.demo.netty.tcp;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class TestClient {
+public class TcpClient {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("127.0.0.1", 8080);
         OutputStream os = socket.getOutputStream();
