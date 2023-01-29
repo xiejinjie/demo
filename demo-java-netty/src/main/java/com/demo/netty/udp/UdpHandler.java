@@ -20,20 +20,41 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.DatagramPacket;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Handler implementation for the echo server
  */
 public class UdpHandler extends ChannelInboundHandlerAdapter {
 
+    AtomicInteger counter = new AtomicInteger();
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+        new Thread(()->{
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println(counter.get());
+            }
+        }).start();
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        counter.incrementAndGet();
         DatagramPacket datagramPacket = (DatagramPacket) msg;
         ByteBuf byteBuf = datagramPacket.content();
         int len = byteBuf.readableBytes();
         byte[] bytes = new byte[len];
         byteBuf.readBytes(bytes);
-        System.out.println("receive msg: " + new String(bytes));
-        datagramPacket.release();
+//        System.out.println("receive msg: " + new String(bytes));
+
+        ctx.writeAndFlush(datagramPacket);
     }
 
     @Override
