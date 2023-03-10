@@ -9,3 +9,5 @@ java byte数组和int相互转换
 使用RestTemplate，发送CORS跨域请求
 - [demo-java-package](https://github.com/xiejinjie/demo/tree/main/demo-java-package)
 Java打包可执行Jar
+- [demo-java-threadpool](https://github.com/xiejinjie/demo/tree/main/demo-java-threadpool)
+Java线程池ThreadPoolExecutor
