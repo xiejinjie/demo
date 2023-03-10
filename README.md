@@ -7,3 +7,7 @@ GO版本的docker client演示拉取镜像、创建容器、启动容器、停�
 java byte数组和int相互转换
 - [demo-java-cros-debug](https://github.com/xiejinjie/demo/tree/main/demo-java-cros-debug)
 使用RestTemplate，发送CORS跨域请求
+- [demo-java-package](https://github.com/xiejinjie/demo/tree/main/demo-java-package)
+Java打包可执行Jar
+- [demo-java-threadpool](https://github.com/xiejinjie/demo/tree/main/demo-java-threadpool)
+Java线程池ThreadPoolExecutor
