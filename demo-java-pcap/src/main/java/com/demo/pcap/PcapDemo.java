@@ -15,6 +15,16 @@ public class PcapDemo {
     private static final Logger logger = LoggerFactory.getLogger(PcapDemo.class);
 
     public static void main( String[] args ) throws Exception {
+        IPcapService pcapService = new PcapServiceImpl();
+        try {
+            pcapService.startPcap("192.168.101.2", "udp and dst port 10202");
+            Thread.sleep(200000);
+        } finally {
+            pcapService.stopPcap();
+        }
+    }
+
+    private static void test() throws Exception {
         for (PcapNetworkInterface p : Pcaps.findAllDevs()) {
             System.out.println(p);
         }
