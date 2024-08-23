@@ -24,11 +24,18 @@ public class IpController {
 
     @GetMapping("/current")
     public Map<String, Object> getCurIp() {
-        String currentIp = ipService.getCurrentIp();
-        Map<String, Object> res = new HashMap<>();
-        res.put("code", 200);
-        res.put("msg", "SUCCESS");
-        res.put("data", Collections.singletonMap("ip", currentIp));
-        return res;
+        try {
+            String currentIp = ipService.getCurrentIp();
+            Map<String, Object> res = new HashMap<>();
+            res.put("code", 200);
+            res.put("msg", "SUCCESS");
+            res.put("data", Collections.singletonMap("ip", currentIp));
+            return res;
+        } catch (Exception e) {
+            Map<String, Object> res = new HashMap<>();
+            res.put("code", 500);
+            res.put("msg", e.getMessage());
+            return res;
+        }
     }
 }

@@ -39,9 +39,17 @@ public class IpControllerTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Get current ip error when ip api unusable")
-    public void getCurrentIpShouldReturnErrorWhenIpApiUnusable() {
+    @DisplayName("Get current ip error when ip api unavailable")
+    public void getCurrentIpShouldReturnErrorWhenIpApiUnusable() throws Exception {
+        // build test scenario
+        Mockito.when(restClient.getForObject(any(), any(), new Object[]{})).thenThrow(new RuntimeException("Api is unavailable"));
 
-
+        // test & verify
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/ip/current")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.code",
+                        Matchers.equalTo(500))
+        );
     }
 }

@@ -8,7 +8,7 @@ spring:
     password: ''
     # init database
     initialization-mode: always
-    schema: classpath:db/init.sql,classpath:db/init_data.sql
+    schema: classpath:db/init.sql
 mybatis:
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath:mapper/**/*.xml
