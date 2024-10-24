@@ -26,6 +26,7 @@
             <artifactId>logback-core</artifactId>
             <version>1.3.0</version>
         </dependency>
+         <!-- logback DBAppender-->
         <dependency>
             <groupId>ch.qos.logback.db</groupId>
             <artifactId>logback-classic-db</artifactId>
