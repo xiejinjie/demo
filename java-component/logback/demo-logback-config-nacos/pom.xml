@@ -38,5 +38,12 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             <version>0.2.1.RELEASE</version>
         </dependency>
+
+        <!-- logback if标签依赖 -->
+        <dependency>
+            <groupId>org.codehaus.janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>3.1.8</version>
+        </dependency>
     </dependencies>
 </project>

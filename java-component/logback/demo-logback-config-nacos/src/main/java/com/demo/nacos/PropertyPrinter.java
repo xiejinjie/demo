@@ -27,8 +27,8 @@ public class PropertyPrinter implements ApplicationRunner {
     private Environment env;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         logger.info("logging.config: " + env.getProperty("logging.config"));
-        logger.info("logging.file.name: " + env.getProperty("logging.file.name"));
+        logger.info("logging.console.enable: " + env.getProperty("logging.console.enable"));
     }
 }

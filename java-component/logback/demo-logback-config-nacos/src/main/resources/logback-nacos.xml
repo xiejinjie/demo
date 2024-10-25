@@ -3,40 +3,20 @@
     <!-- 日志输出格式 -->
 	<property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n" />
 
-	<!-- 控制台输出 -->
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>${log.pattern}</pattern>
-		</encoder>
-	</appender>
-	<!--系统日志-->
-	<root level="info">
-		<appender-ref ref="console" />
-	</root>
-
-	<!-- logback变量 -->
-	<property name="file.path" value="logs"/>
-	<!-- nacos变量 -->
-	<springProperty scope="context" name="file.name" source="logging.file.name" default="info"/>
-	<!-- 日志输出到文件 -->
-	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${file.path}/${file.name}.log</file>
-		<!-- 循环政策：基于时间创建日志文件 -->
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<!-- 日志文件名格式 -->
-			<fileNamePattern>${file.path}/${file.name}.%d{yyyy-MM-dd}.log</fileNamePattern>
-			<!-- 日志最大的历史 60天 -->
-			<maxHistory>60</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>${log.pattern}</pattern>
-		</encoder>
-		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<!-- 过滤的级别 -->
-			<level>INFO</level>
-		</filter>
-	</appender>
-	<root level="info">
-		<appender-ref ref="file" />
-	</root>
+	<!--nacos动态获取配置-->
+	<springProperty name="console.enabled" source="logging.console.enabled" scope="context" defaultValue="true"/>
+	<if condition='${console.enabled}'>
+		<then>
+			<!-- 控制台输出 -->
+			<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+				<encoder>
+					<pattern>${log.pattern}</pattern>
+				</encoder>
+			</appender>
+			<!--系统操作日志-->
+			<root level="info">
+				<appender-ref ref="console" />
+			</root>
+		</then>
+	</if>
 </configuration>

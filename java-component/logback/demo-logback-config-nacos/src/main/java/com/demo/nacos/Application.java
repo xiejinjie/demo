@@ -31,6 +31,6 @@ public class Application {
 
         Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(
                 () -> logger.info("Application is running..."),
-                2, 2, TimeUnit.SECONDS);
+                1, 1, TimeUnit.SECONDS);
     }
 }
